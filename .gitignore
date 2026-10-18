@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Generated output
+output/
+images/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
