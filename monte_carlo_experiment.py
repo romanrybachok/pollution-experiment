@@ -448,34 +448,34 @@ class MonteCarloVisualizer:
         p95s = [np.percentile(conc[:n], 95) * 1000 for n in steps]
 
         fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(16, 5))
-        fig.suptitle('Збіжність Monte Carlo оцінок', fontsize=13, fontweight='bold')
+        fig.suptitle('Convergence of Monte Carlo estimates', fontsize=13, fontweight='bold')
 
         ax1.plot(steps, means, 'b-', linewidth=1.5)
         ax1.axhline(np.mean(conc) * 1000, color='red', linestyle='--', alpha=0.5,
-                     label=f'Фінальне = {np.mean(conc)*1000:.3f}')
-        ax1.set_xlabel('Кількість ітерацій')
-        ax1.set_ylabel('Середня конц., мкг/л')
-        ax1.set_title('Збіжність середнього')
+                     label=f'Final = {np.mean(conc)*1000:.3f}')
+        ax1.set_xlabel('Number of iterations')
+        ax1.set_ylabel('Mean concentration, µg/L')
+        ax1.set_title('Convergence of the mean')
         ax1.legend(fontsize=9)
         ax1.grid(True, alpha=0.3)
 
         ax2.plot(steps, probs, 'r-', linewidth=1.5)
         ax2.axhline(probs[-1], color='gray', linestyle='--', alpha=0.5,
-                     label=f'Фінальне = {probs[-1]:.1f}%')
-        ax2.set_xlabel('Кількість ітерацій')
-        ax2.set_ylabel('P[C > ГДК], %')
-        ax2.set_title('Збіжність ймовірності перевищення ГДК')
+                     label=f'Final = {probs[-1]:.1f}%')
+        ax2.set_xlabel('Number of iterations')
+        ax2.set_ylabel('P[C > MAC-EQS], %')
+        ax2.set_title('Convergence of the exceedance probability')
         ax2.legend(fontsize=9)
         ax2.grid(True, alpha=0.3)
 
         ax3.plot(steps, p95s, 'g-', linewidth=1.5)
         ax3.axhline(gdk * 1000, color='red', linestyle='--', linewidth=2,
-                     label=f'ГДК = {gdk*1000:.1f} мкг/л')
+                     label=f'MAC-EQS = {gdk*1000:.1f} µg/L')
         ax3.axhline(p95s[-1], color='gray', linestyle='--', alpha=0.5,
-                     label=f'Фінальне P95 = {p95s[-1]:.3f}')
-        ax3.set_xlabel('Кількість ітерацій')
-        ax3.set_ylabel('95-й процентиль, мкг/л')
-        ax3.set_title('Збіжність 95-го процентиля')
+                     label=f'Final P95 = {p95s[-1]:.3f}')
+        ax3.set_xlabel('Number of iterations')
+        ax3.set_ylabel('95th percentile, µg/L')
+        ax3.set_title('Convergence of the 95th percentile')
         ax3.legend(fontsize=9)
         ax3.grid(True, alpha=0.3)
 
