@@ -58,4 +58,4 @@ If you use this code, please cite the article above.
 
 ## License
 
-No license has been assigned yet; please contact the authors regarding reuse.
+Released under the MIT License — see [LICENSE](LICENSE).
